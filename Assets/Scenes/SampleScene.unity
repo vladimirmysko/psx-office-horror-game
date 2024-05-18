@@ -209,12 +209,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 446733704}
+  m_Father: {fileID: 544572751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -407,11 +407,12 @@ Transform:
   m_GameObject: {fileID: 446733702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 330585546}
+  - {fileID: 544572751}
+  - {fileID: 1673232770}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &446733705
@@ -437,7 +438,7 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &446733706
@@ -500,11 +501,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 446733705}
   playerInput: {fileID: 446733706}
+  cameraTransform: {fileID: 544572751}
   movementSpeed: 5
-  mass: 1
-  jumpSpeed: 5
   acceleration: 20
   sprintSpeedMultiplier: 2
+  mass: 1
+  jumpSpeed: 5
+  groundCheck: {fileID: 1673232770}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  crouchHeight: 1.2
+  crouchTransitionSpeed: 10
+  crouchSpeedMultiplier: 0.5
+--- !u!1 &544572750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544572751}
+  m_Layer: 0
+  m_Name: Camera Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &544572751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544572750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 330585546}
+  m_Father: {fileID: 446733704}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548300876
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +560,7 @@ GameObject:
   - component: {fileID: 548300879}
   - component: {fileID: 548300878}
   - component: {fileID: 548300877}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,11 +653,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Shape:
     rid: 4662953156006641670
-  m_Size: {x: 10, y: 0, z: 10}
+  m_Size: {x: 100, y: 0, z: 100}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
   m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 47
+  m_UnmodifiedMeshVersion: 125
   m_ShapeBox:
     m_Center: {x: 0.5, y: 0, z: 0.5}
     m_Extent: {x: 0.5, y: 0, z: 0.5}
@@ -722,39 +763,39 @@ MonoBehaviour:
   - m_Vertices: 0f000000
   m_SharedTextures: []
   m_Positions:
-  - {x: -4.5, y: 0, z: -4.5}
-  - {x: -4.5, y: 0, z: 0.5}
-  - {x: 0.5, y: 0, z: -4.5}
+  - {x: -49.5, y: 0, z: -49.5}
+  - {x: -49.5, y: 0, z: 0.5}
+  - {x: 0.5, y: 0, z: -49.5}
   - {x: 0.5, y: 0, z: 0.5}
-  - {x: -4.5, y: 0, z: 0.5}
-  - {x: -4.5, y: 0, z: 5.5}
+  - {x: -49.5, y: 0, z: 0.5}
+  - {x: -49.5, y: 0, z: 50.5}
   - {x: 0.5, y: 0, z: 0.5}
-  - {x: 0.5, y: 0, z: 5.5}
-  - {x: 0.5, y: 0, z: -4.5}
+  - {x: 0.5, y: 0, z: 50.5}
+  - {x: 0.5, y: 0, z: -49.5}
   - {x: 0.5, y: 0, z: 0.5}
-  - {x: 5.5, y: 0, z: -4.5}
-  - {x: 5.5, y: 0, z: 0.5}
+  - {x: 50.5, y: 0, z: -49.5}
+  - {x: 50.5, y: 0, z: 0.5}
   - {x: 0.5, y: 0, z: 0.5}
-  - {x: 0.5, y: 0, z: 5.5}
-  - {x: 5.5, y: 0, z: 0.5}
-  - {x: 5.5, y: 0, z: 5.5}
+  - {x: 0.5, y: 0, z: 50.5}
+  - {x: 50.5, y: 0, z: 0.5}
+  - {x: 50.5, y: 0, z: 50.5}
   m_Textures0:
-  - {x: -4.5, y: -4.5}
-  - {x: -4.5, y: 0.5}
-  - {x: 0.5, y: -4.5}
+  - {x: -49.5, y: -49.5}
+  - {x: -49.5, y: 0.5}
+  - {x: 0.5, y: -49.5}
   - {x: 0.5, y: 0.5}
-  - {x: -4.5, y: 0.5}
-  - {x: -4.5, y: 5.5}
+  - {x: -49.5, y: 0.5}
+  - {x: -49.5, y: 50.5}
   - {x: 0.5, y: 0.5}
-  - {x: 0.5, y: 5.5}
-  - {x: 0.5, y: -4.5}
+  - {x: 0.5, y: 50.5}
+  - {x: 0.5, y: -49.5}
   - {x: 0.5, y: 0.5}
-  - {x: 5.5, y: -4.5}
-  - {x: 5.5, y: 0.5}
+  - {x: 50.5, y: -49.5}
+  - {x: 50.5, y: 0.5}
   - {x: 0.5, y: 0.5}
-  - {x: 0.5, y: 5.5}
-  - {x: 5.5, y: 0.5}
-  - {x: 5.5, y: 5.5}
+  - {x: 0.5, y: 50.5}
+  - {x: 50.5, y: 0.5}
+  - {x: 50.5, y: 50.5}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -783,7 +824,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 740731661}
-  m_VersionIndex: 47
+  m_VersionIndex: 125
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -821,7 +862,7 @@ Mesh:
     vertexCount: 16
     localAABB:
       m_Center: {x: 0.5, y: 0, z: 0.5}
-      m_Extent: {x: 5, y: 0, z: 5}
+      m_Extent: {x: 50, y: 0, z: 50}
   m_Shapes:
     vertices: []
     shapes: []
@@ -900,7 +941,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 768
-    _typelessdata: 000090c000000000000090c0000000000000803f000000000000803f0000000000000000000080bf000090c0000090c0000090c0000000000000003f000000000000803f000000000000803f0000000000000000000080bf000090c00000003f0000003f00000000000090c0000000000000803f000000000000803f0000000000000000000080bf0000003f000090c00000003f000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000003f0000003f000090c0000000000000003f000000000000803f000000000000803f0000000000000000000080bf000090c00000003f000090c0000000000000b040000000000000803f000000000000803f0000000000000000000080bf000090c00000b0400000003f000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000003f0000003f0000003f000000000000b040000000000000803f000000000000803f0000000000000000000080bf0000003f0000b0400000003f00000000000090c0000000000000803f000000000000803f0000000000000000000080bf0000003f000090c00000003f000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000003f0000003f0000b04000000000000090c0000000000000803f000000000000803f0000000000000000000080bf0000b040000090c00000b040000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000b0400000003f0000003f000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000003f0000003f0000003f000000000000b040000000000000803f000000000000803f0000000000000000000080bf0000003f0000b0400000b040000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000b0400000003f0000b040000000000000b040000000000000803f000000000000803f0000000000000000000080bf0000b0400000b040
+    _typelessdata: 000046c200000000000046c2000000000000803f000000000000803f0000000000000000000080bf000046c2000046c2000046c2000000000000003f000000000000803f000000000000803f0000000000000000000080bf000046c20000003f0000003f00000000000046c2000000000000803f000000000000803f0000000000000000000080bf0000003f000046c20000003f000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000003f0000003f000046c2000000000000003f000000000000803f000000000000803f0000000000000000000080bf000046c20000003f000046c20000000000004a42000000000000803f000000000000803f0000000000000000000080bf000046c200004a420000003f000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000003f0000003f0000003f0000000000004a42000000000000803f000000000000803f0000000000000000000080bf0000003f00004a420000003f00000000000046c2000000000000803f000000000000803f0000000000000000000080bf0000003f000046c20000003f000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000003f0000003f00004a4200000000000046c2000000000000803f000000000000803f0000000000000000000080bf00004a42000046c200004a42000000000000003f000000000000803f000000000000803f0000000000000000000080bf00004a420000003f0000003f000000000000003f000000000000803f000000000000803f0000000000000000000080bf0000003f0000003f0000003f0000000000004a42000000000000803f000000000000803f0000000000000000000080bf0000003f00004a4200004a42000000000000003f000000000000803f000000000000803f0000000000000000000080bf00004a420000003f00004a420000000000004a42000000000000803f000000000000803f0000000000000000000080bf00004a4200004a42
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -955,7 +996,7 @@ Mesh:
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 0.5, y: 0, z: 0.5}
-    m_Extent: {x: 5, y: 0, z: 5}
+    m_Extent: {x: 50, y: 0, z: 50}
   m_MeshUsageFlags: 0
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
@@ -1196,7 +1237,7 @@ GameObject:
   - component: {fileID: 1267802573}
   - component: {fileID: 1267802572}
   - component: {fileID: 1267802571}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1534,6 +1575,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1673232769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1673232770}
+  m_Layer: 0
+  m_Name: Gound Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1673232770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673232769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 446733704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
